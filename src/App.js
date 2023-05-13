@@ -7,7 +7,7 @@ const App = () => {
   useEffect (()  => {
     document.title = `${count} new texts!`;
 
-  })
+  }, []);
 
 
 
