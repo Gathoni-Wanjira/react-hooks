@@ -1,39 +1,34 @@
-import React from "react";
-import { useState } from "react";
+import React ,{useState , useEffect}from "react";
+
 
 const App = () => {
- 
-  const [details , setDetails] = useState({counter: 0, name: ""});
+  const [count, setCount] = useState(0);
+  
+  useEffect (()  => {
+    document.title = `${count} new texts!`;
+
+  })
 
 
 
-
-  const increaseCounter = () => {
-    setDetails((prev) => ({
-      ...prev,
-      counter:prev.counter + 1,
-    }));
-    
-  }
-  console.log(details);
-
-
-
-
-  return (
-    <div className="App">
-      <input type= "text" onChange={e => (e.target.value)}/>
-      <h1>{details.name} has clicked:{details.counter} times.</h1>
-      <button onClick={increaseCounter}> Increase </button>
-
+  return(
+    <div>
+<h3>{count} new texts!</h3>
+<button onClick={() => setCount(count +1 )}>Increase</button>
     </div>
   );
 }
 
+
+
 export default App;
 
 
-// NOTES TO REMEMBER
-// UseState hooks are functions used  to add State in a functional component.
-// "State" are just values or variables of a component. 
-// To use any hook ... you first need to import that hook from react library.
+// Use effect is used to perform side effects on the components.
+// Side effects are actions that are performed by the "outside world"
+// We perform a side effect when we need to reach outside of a react component and do something.
+// Common side effects include a) fetching data from an api.... updating the DOM document and Window .... setting timer functions like setTimeInterval, setTimeout
+// Use effect hook accepts 2 arguments... one a callback and the other one  a dependency.
+// Callback is executed when we want to execute the side logic(What to run)
+// Dependencies is an optional argument and it contains an array of variables.(When to run)
+// useEffect(callback , dependencies)
