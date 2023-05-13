@@ -1,23 +1,14 @@
-import React ,{useState , useEffect}from "react";
+import React ,{useState , useEffect, useContext}from "react";
 
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [otherCount , setOtherCount] = useState(5);
-  
-  useEffect (()  => {
-    document.title = `${otherCount} new texts!`;
-
-  }, [otherCount]);
-
-
+  co
 
   return(
     <div>
-<h3>{count} new texts!</h3>
-<button onClick={() => setCount(count +1 )}>Increase</button>
-<h3>{otherCount} is here!</h3>
-<button onClick={() => setOtherCount(otherCount +5)}>Increase by 5</button>
+
+<h3>{time} in seconds!</h3>
+
     </div>
   );
 }
