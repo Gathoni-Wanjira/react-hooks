@@ -1,26 +1,23 @@
-import React ,{useState , useEffect}from "react";
+import React, { createContext } from "react";
+import Main from './Main';
+
+ export const LoginContext = createContext();
+
 
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [otherCount , setOtherCount] = useState(5);
-  
-  useEffect (()  => {
-    document.title = `${otherCount} new texts!`;
 
-  }, [otherCount]);
+  return (
 
-
-
-  return(
-    <div>
-<h3>{count} new texts!</h3>
-<button onClick={() => setCount(count +1 )}>Increase</button>
-<h3>{otherCount} is here!</h3>
-<button onClick={() => setOtherCount(otherCount +5)}>Increase by 5</button>
+    <LoginContext.Provider value={true}>
+        <div>
+      <Main />
     </div>
+
+    </LoginContext.Provider>
+
   );
-}
+};
 
 
 
@@ -35,3 +32,9 @@ export default App;
 // Callback is executed when we want to execute the side logic(What to run)
 // Dependencies is an optional argument and it contains an array of variables.(When to run)
 // useEffect(callback , dependencies)
+
+// UseContext is used to manage/access global state , user settings ,themes services ect.
+// UseContext has 3 steps; 
+// 1.Creating the context
+// 2.providing the context
+// 3.Consuming the context
