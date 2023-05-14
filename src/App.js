@@ -1,25 +1,27 @@
-import React, { createContext } from "react";
-import Main from './Main';
-
- export const LoginContext = createContext();
+import React, { useEffect, useState, useRef } from "react";
 
 
 
 const App = () => {
+  const [Name, SetName] = useState("");
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+
+
 
   return (
+    <div>
+      <input type="text" onChange={(e) => SetName(e.target.value)}></input>
+      <h2>name : {Name}</h2>
+      <h4>Renders : {count.current}</h4>
 
-    <LoginContext.Provider value={true}>
-        <div>
-      <Main />
     </div>
-
-    </LoginContext.Provider>
-
   );
+
 };
-
-
 
 export default App;
 
@@ -38,3 +40,6 @@ export default App;
 // 1.Creating the context
 // 2.providing the context
 // 3.Consuming the context
+
+// UseRef is used to access DOM elements 
+// It is also used to create mutable variables which will not re-render the component.
