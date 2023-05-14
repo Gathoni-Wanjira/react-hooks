@@ -1,22 +1,21 @@
-import React, { useEffect, useState, useRef } from "react";
+import React , {useRef} from "react";
 
 
 
 const App = () => {
-  const [Name, SetName] = useState("");
-  const count = useRef(0);
-
-  useEffect(() => {
-    count.current = count.current + 1;
-  });
+  const inputEle = useRef();
+  const handleClick = () => {
+    console.log(inputEle.current);
+    inputEle.current.style.width = '300px';
+  }
 
 
 
   return (
     <div>
-      <input type="text" onChange={(e) => SetName(e.target.value)}></input>
-      <h2>name : {Name}</h2>
-      <h4>Renders : {count.current}</h4>
+      <input type="text" ref = {inputEle}></input>
+      <button onClick = {handleClick}> Click Here</button>
+      
 
     </div>
   );
