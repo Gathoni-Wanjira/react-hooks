@@ -1,17 +1,23 @@
-import React ,{useState , useEffect, useContext}from "react";
+import React, { createContext } from "react";
+import Main from './Main';
+
+ export const LoginContext = createContext();
+
 
 
 const App = () => {
-  co
 
-  return(
-    <div>
+  return (
 
-<h3>{time} in seconds!</h3>
-
+    <LoginContext.Provider value={true}>
+        <div>
+      <Main />
     </div>
+
+    </LoginContext.Provider>
+
   );
-}
+};
 
 
 
@@ -26,3 +32,9 @@ export default App;
 // Callback is executed when we want to execute the side logic(What to run)
 // Dependencies is an optional argument and it contains an array of variables.(When to run)
 // useEffect(callback , dependencies)
+
+// UseContext is used to manage/access global state , user settings ,themes services ect.
+// UseContext has 3 steps; 
+// 1.Creating the context
+// 2.providing the context
+// 3.Consuming the context
