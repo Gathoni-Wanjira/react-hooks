@@ -1,22 +1,54 @@
-import React , {useRef} from "react";
+
+import React , {useReducer} from "react";
 
 
+const initialState = {count: 0}
+
+const reducer = (state, action) => {
+  switch (action.type){
+    case "increase":
+    return {count:state.count + 1} ;
+
+    case "decrease":
+      return {count:state.count - 1};
+
+      default: 
+      return state;
+
+
+
+  }
+
+
+}
 
 const App = () => {
-  const inputEle = useRef();
-  const handleClick = () => {
-    console.log(inputEle.current);
-    inputEle.current.style.width = '300px';
-  }
+
+   const [state, dispatch] =useReducer(reducer , initialState);
+  
+
+
+  const increaseCount = () => {
+   dispatch({type : "increase"})
+  };
+
+
+  const decreaseCount = () => {
+    dispatch ({type: "decrease"})
+   
+  };
+
+
+
 
 
 
   return (
     <div>
-      <input type="text" ref = {inputEle}></input>
-      <button onClick = {handleClick}> Click Here</button>
-      
-
+    <h2>count : {state.count}</h2>
+      <button onClick = {increaseCount}> increase Count</button>
+      <button onClick = {decreaseCount}>Decrease Count</button>
+    
     </div>
   );
 
@@ -42,3 +74,8 @@ export default App;
 
 // UseRef is used to access DOM elements 
 // It is also used to create mutable variables which will not re-render the component.
+
+// UseReducer is used to manage state in react applications.
+// It is used to write clean code when you are using multiple states hence being regarded as a state mananger.
+// useReducer accepts two parameters ... (reducer function, default state)
+// 
