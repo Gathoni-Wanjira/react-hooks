@@ -1,54 +1,26 @@
 
-import React , {useReducer} from "react";
+import React , {useEffect, useState , useLayoutEffect} from "react";
 
-
-const initialState = {count: 0}
-
-const reducer = (state, action) => {
-  switch (action.type){
-    case "increase":
-    return {count:state.count + 1} ;
-
-    case "decrease":
-      return {count:state.count - 1};
-
-      default: 
-      return state;
-
-
-
-  }
-
-
-}
 
 const App = () => {
 
-   const [state, dispatch] =useReducer(reducer , initialState);
-  
+  const [toggle, setToggle] = useState (true);
 
+  useLayoutEffect(() => {
+  console.log("useLayoutEffect");
+}, [toggle]);
 
-  const increaseCount = () => {
-   dispatch({type : "increase"})
-  };
-
-
-  const decreaseCount = () => {
-    dispatch ({type: "decrease"})
-   
-  };
-
-
+useEffect(() =>  {
+console.log("useEffect");
+}, [toggle]);
 
 
 
 
   return (
     <div>
-    <h2>count : {state.count}</h2>
-      <button onClick = {increaseCount}> increase Count</button>
-      <button onClick = {decreaseCount}>Decrease Count</button>
-    
+ <button onClick={()=> setToggle(toggle)}>Toggle</button>
+ {toggle  && <h4>Code Bless You</h4>}
     </div>
   );
 
@@ -78,4 +50,10 @@ export default App;
 // UseReducer is used to manage state in react applications.
 // It is used to write clean code when you are using multiple states hence being regarded as a state mananger.
 // useReducer accepts two parameters ... (reducer function, default state)
-// 
+
+
+// UseLayoutEffect
+// It works exactly as the useEffect. The difference is seen when it runs.
+// UseEffectLayout is printed before the browser runs 
+// UseEffect runs after the DOM is printed on the browser.
+// react components => useLayoutEffect=> react prints The Dom => UseEffect
